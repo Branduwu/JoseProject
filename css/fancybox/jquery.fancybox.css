@@ -1,0 +1,325 @@
+.fancybox-wrap,
+.fancybox-skin,
+.fancybox-outer,
+.fancybox-inner,
+.fancybox-image,
+.fancybox-wrap iframe,
+.fancybox-wrap object,
+.fancybox-nav,
+.fancybox-nav span,
+.fancybox-tmp {
+	padding: 0; /* Elimina el padding para estos elementos */
+	margin: 0; /* Elimina el margen para estos elementos */
+	border: 0; /* Elimina el borde para estos elementos */
+	outline: none; /* Elimina el contorno para estos elementos */
+	vertical-align: top; /* Alinea verticalmente estos elementos al tope */
+}
+
+.fancybox-wrap {
+	position: absolute; /* Posiciona el elemento de forma absoluta */
+	top: 0; /* Coloca el elemento en la parte superior */
+	left: 0; /* Coloca el elemento en la parte izquierda */
+	z-index: 8020; /* Define el nivel de apilamiento */
+}
+
+.fancybox-skin {
+	position: relative; /* Posiciona el elemento de forma relativa */
+	background: #2F3238; /* Color de fondo */
+	color: #565656; /* Color del texto */
+	text-shadow: none; /* Sin sombra de texto */
+	-webkit-border-radius: 0; /* Sin borde redondeado en webkit */
+	   -moz-border-radius: 0; /* Sin borde redondeado en Firefox */
+	        border-radius: 0; /* Sin borde redondeado */
+}
+
+.fancybox-opened {
+	z-index: 8030; /* Define el nivel de apilamiento para fancybox abierto */
+}
+
+.fancybox-opened .fancybox-skin {
+	-webkit-box-shadow: none; /* Sin sombra en webkit */
+	   -moz-box-shadow: none; /* Sin sombra en Firefox */
+	        box-shadow: none; /* Sin sombra */
+}
+
+.fancybox-outer, .fancybox-inner {
+	position: relative; /* Posiciona el elemento de forma relativa */
+}
+
+.fancybox-inner {
+	overflow: hidden; /* Oculta el desbordamiento */
+}
+
+.fancybox-type-iframe .fancybox-inner {
+	-webkit-overflow-scrolling: touch; /* Habilita el desplazamiento táctil en iOS */
+}
+
+.fancybox-error {
+	color: #444; /* Color del texto */
+	font-size: 14px; /* Tamaño de la fuente */
+	line-height: 20px; /* Altura de línea */
+	margin: 0; /* Sin margen */
+	padding: 15px; /* Padding de 15px */
+	white-space: nowrap; /* Sin ajuste de línea */
+}
+
+.fancybox-image, .fancybox-iframe {
+	display: block; /* Muestra como bloque */
+	width: 100%; /* Ancho completo */
+	height: 100%; /* Altura completa */
+}
+
+.fancybox-image {
+	max-width: 100%; /* Ancho máximo del 100% */
+	max-height: 100%; /* Altura máxima del 100% */
+}
+
+#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+	background-image: url('fancybox_sprite.png') !important; /* Imagen de fondo importante */
+}
+
+#fancybox-loading {
+	position: fixed; /* Posición fija */
+	top: 50%; /* Centra verticalmente */
+	left: 50%; /* Centra horizontalmente */
+	margin-top: -22px; /* Ajusta el margen superior */
+	margin-left: -22px; /* Ajusta el margen izquierdo */
+	background-position: 0 -108px; /* Posición de la imagen de fondo */
+	opacity: 0.8; /* Opacidad */
+	cursor: pointer; /* Muestra el cursor de puntero */
+	z-index: 8060; /* Nivel de apilamiento */
+}
+
+#fancybox-loading div {
+	width: 44px; /* Ancho de 44px */
+	height: 44px; /* Altura de 44px */
+	background: url('fancybox_loading.gif') center center no-repeat; /* Imagen de fondo centrada sin repetición */
+}
+
+.fancybox-close {
+	position: absolute; /* Posición absoluta */
+	right: 0; /* Alinea a la derecha */
+	top: 0; /* Alinea en la parte superior */
+	width: 40px; /* Ancho de 40px */
+	height: 38px; /* Altura de 38px */
+	cursor: pointer; /* Muestra el cursor de puntero */
+	z-index: 9000; /* Nivel de apilamiento */
+	background-image: none; /* Sin imagen de fondo */
+	opacity: 0.5; /* Opacidad */
+	-webkit-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en webkit */
+	   -moz-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en Firefox */
+		 -o-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en Opera */
+		    transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición estándar */
+}
+
+.fancybox-close i {
+	left: 50%; /* Centra horizontalmente */
+	top: 50%; /* Centra verticalmente */
+	margin: -11px 0 0 -11px; /* Ajusta el margen */
+	font-size: 22px; /* Tamaño de la fuente */
+	line-height: 1em; /* Altura de línea */
+	position: absolute; /* Posición absoluta */
+	color: #FFFFFF; /* Color del texto */
+}
+
+.fancybox-close:hover {
+	opacity: 1; /* Opacidad al pasar el ratón */
+}
+
+.fancybox-nav {
+	position: absolute; /* Posición absoluta */
+	top: 0; /* Alinea en la parte superior */
+	height: 100%; /* Altura completa */
+	cursor: pointer; /* Muestra el cursor de puntero */
+	text-decoration: none; /* Sin decoración de texto */
+	background: transparent url('blank.gif'); /* Fondo transparente con imagen (para IE) */
+	-webkit-tap-highlight-color: rgba(0,0,0,0); /* Sin resaltar en dispositivos táctiles */
+	z-index: 8040; /* Nivel de apilamiento */
+}
+
+.fancybox-prev,
+.fancybox-prev span {
+	left: 0; /* Alinea a la izquierda */
+}
+
+.fancybox-next,
+.fancybox-next span {
+	right: 0; /* Alinea a la derecha */
+}
+
+.fancybox-nav span {
+	position: absolute; /* Posición absoluta */
+	top: 50%; /* Centra verticalmente */
+	width: 44px; /* Ancho de 44px */
+	height: 32px; /* Altura de 32px */
+	margin-top: -25px; /* Ajusta el margen superior */
+	cursor: pointer; /* Muestra el cursor de puntero */
+	z-index: 8040; /* Nivel de apilamiento */
+	background-image: none; /* Sin imagen de fondo */
+	background-color: #26292E; /* Color de fondo */
+	background-position-y: -38px; /* Posición de la imagen de fondo verticalmente */
+	opacity: 0.5; /* Opacidad */
+	-webkit-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en webkit */
+	   -moz-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en Firefox */
+		 -o-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en Opera */
+		    transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición estándar */
+}
+
+.fancybox-next span {
+	background-position-y: -72px; /* Ajusta la posición de la imagen de fondo */
+}
+
+.fancybox-prev span i {
+	left: 50%; /* Centra horizontalmente */
+	top: 50%; /* Centra verticalmente */
+	margin: -15px 0 0 -17px; /* Ajusta el margen */
+	font-size: 30px; /* Tamaño de la fuente */
+	line-height: 1em; /* Altura de línea */
+	position: absolute; /* Posición absoluta */
+	color: #FFFFFF; /* Color del texto */
+}
+
+.fancybox-next span i {
+	left: 50%; /* Centra horizontalmente */
+	top: 50%; /* Centra verticalmente */
+	margin: -15px 0 0 -15px; /* Ajusta el margen */
+	font-size: 30px; /* Tamaño de la fuente */
+	line-height: 1em; /* Altura de línea */
+	position: absolute; /* Posición absoluta */
+	color: #FFFFFF; /* Color del texto */
+}
+
+.fancybox-nav:hover span {
+	opacity: 1; /* Opacidad al pasar el ratón */
+}
+
+.fancybox-tmp {
+	position: absolute; /* Posición absoluta */
+	top: -99999px; /* Fuera de la pantalla */
+	left: -99999px; /* Fuera de la pantalla */
+	visibility: hidden; /* Oculto */
+	max-width: 99999px; /* Ancho máximo */
+	max-height: 99999px; /* Altura máxima */
+	overflow: visible !important; /* Desbordamiento visible */
+}
+
+/* Ayudante de overlay */
+
+.fancybox-lock {
+	margin: 0!important; /* Elimina el margen */
+}
+
+.fancybox-overlay {
+	position: absolute; /* Posición absoluta */
+	top: 0; /* Alinea en la parte superior */
+	left: 0; /* Alinea a la izquierda */
+	overflow: hidden !important; /* Oculta el desbordamiento */
+	display: none; /* Oculto */
+	z-index: 8010; /* Nivel de apilamiento */
+	background: url('fancybox_overlay.png'); /* Imagen de fondo */
+}
+
+.fancybox-overlay-fixed {
+	position: fixed; /* Posición fija */
+	bottom: 0; /* Alinea en la parte inferior */
+	right: 0; /* Alinea a la derecha */
+}
+
+.fancybox-lock .fancybox-overlay {
+	overflow: auto; /* Desbordamiento automático */
+	overflow-y: scroll; /* Desbordamiento vertical con scroll */
+}
+
+/* Ayudante de título */
+
+.fancybox-title {
+	visibility: hidden; /* Oculto */
+	position: relative; /* Posición relativa */
+	text-shadow: none; /* Sin sombra de texto */
+	z-index: 8050; /* Nivel de apilamiento */
+}
+
+.fancybox-opened .fancybox-title {
+	visibility: visible; /* Visible cuando está abierto */
+}
+
+.fancybox-opened .fancybox-title h4 {
+	font-size: 24px; /* Tamaño de la fuente */
+	color: #fff; /* Color del texto */
+	font-weight: 300; /* Grosor de la fuente */
+	margin-bottom: 10px; /* Margen inferior */
+}
+
+.fancybox-opened .fancybox-title p {
+	font-size: 16px; /* Tamaño de la fuente */
+	font-weight: 300; /* Grosor de la fuente */
+	color: #bbb; /* Color del texto */
+	line-height: 1.6em; /* Altura de línea */
+	margin-bottom: 0; /* Sin margen inferior */
+}
+
+.fancybox-title-float-wrap {
+	position: absolute; /* Posición absoluta */
+	bottom: 0; /* Alinea en la parte inferior */
+	right: 50%; /* Centra horizontalmente */
+	margin-bottom: -35px; /* Ajusta el margen inferior */
+	z-index: 8050; /* Nivel de apilamiento */
+	text-align: center; /* Alineación de texto centrada */
+}
+
+.fancybox-title-float-wrap .child {
+	display: inline-block; /* Muestra en bloque en línea */
+	margin-right: -100%; /* Ajusta el margen derecho */
+	padding: 2px 20px; /* Padding */
+	background: transparent; /* Fondo transparente */
+	background: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
+	-webkit-border-radius: 15px; /* Bordes redondeados en webkit */
+	   -moz-border-radius: 15px; /* Bordes redondeados en Firefox */
+	        border-radius: 15px; /* Bordes redondeados */
+	text-shadow: 0 1px 2px #222; /* Sombra de texto */
+	color: #FFF; /* Color del texto */
+	font-weight: bold; /* Texto en negrita */
+	line-height: 24px; /* Altura de línea */
+	white-space: nowrap; /* Sin ajuste de línea */
+}
+
+.fancybox-title-outside-wrap {
+	position: relative; /* Posición relativa */
+	margin-top: 10px; /* Margen superior */
+	color: #fff; /* Color del texto */
+}
+
+.fancybox-title-inside-wrap {
+	padding: 3px 30px 6px; /* Padding */
+	background: #61B331; /* Color de fondo */
+}
+
+.fancybox-title-over-wrap {
+	position: absolute; /* Posición absoluta */
+	bottom: 0; /* Alinea en la parte inferior */
+	left: 0; /* Alinea a la izquierda */
+	color: #fff; /* Color del texto */
+	padding: 10px; /* Padding */
+	background: #000; /* Fondo negro */
+	background: rgba(0, 0, 0, .8); /* Fondo semi-transparente */
+}
+
+@media (max-width: 480px) {
+	.fancybox-nav span,
+	.fancybox-nav:hover span,
+	.fancybox-close,
+	.fancybox-close:hover {
+		background: transparent; /* Fondo transparente en pantallas pequeñas */
+	}
+	.fancybox-close i {
+		left: 70px; /* Ajusta la posición a la izquierda */
+		top: 10px; /* Ajusta la posición superior */
+	}
+}
+
+@media (max-width: 320px) {
+	.fancybox-close i {
+		left: 30px; /* Ajusta la posición a la izquierda */
+		top: 20px; /* Ajusta la posición superior */
+	}
+}

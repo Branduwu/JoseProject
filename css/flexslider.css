@@ -1,0 +1,68 @@
+/* Reinicios de navegador */
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus { outline: none; } /* Elimina el contorno en los enlaces activos y enfocados */
+.slides,
+.flex-control-nav,
+.flex-direction-nav { margin: 0; padding: 0; list-style: none; } /* Elimina los márgenes, el padding y las listas con estilo */
+
+/* Estilos necesarios para FlexSlider
+*********************************/ 
+.flexslider { margin: 0; padding: 0; background: white; } /* Fondo blanco para el slider */
+.flexslider .slides > li { display: none; -webkit-backface-visibility: hidden; } /* Oculta las diapositivas antes de cargar el JS para evitar saltos de imagen */
+.flexslider .slides img { width: 100%; display: block; } /* Asegura que las imágenes ocupen el 100% del contenedor */
+.flex-pauseplay span { text-transform: capitalize; } /* Capitaliza el texto de los controles de pausa y reproducción */
+
+/* Clearfix para el elemento .slides */
+.slides:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; } 
+html[xmlns] .slides { display: block; } 
+* html .slides { height: 1%; } /* Clearfix para versiones antiguas de IE */
+
+/* Fallback sin JavaScript */
+/* Si no estás usando otro script, como Modernizr, asegúrate de incluir JS que elimine esta clase al cargar la página */
+.no-js .slides > li:first-child { display: block; } /* Muestra la primera diapositiva si JS está deshabilitado */
+
+/* Tema por defecto de FlexSlider
+*********************************/
+.flexslider { background:none; position: relative; zoom: 1; } /* Ajustes de estilo del contenedor del slider */
+.flex-viewport { max-height: 2000px; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; transition: all 1s ease; } /* Ajustes del viewport del slider */
+.loading .flex-viewport { max-height: 300px; } /* Ajuste de altura durante la carga */
+.flexslider .slides { zoom: 1; } /* Aplicación del zoom */
+
+/* Estilo de los elementos del carrusel */
+.carousel li { margin-right: 5px; }
+
+/* Estilo de las leyendas */
+.flex-caption { background: rgba(0,0,0,.8); margin-left:5px; bottom:5px; position:absolute; padding:20px; z-index:99; } /* Fondo oscuro semitransparente para las leyendas */
+.flex-caption p { font-size: 14px !important; line-height: 22px; font-weight: 300; color: #fff; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; } /* Texto blanco con borde negro para la descripción */
+.flex-caption h2, .flex-caption h4 { color:#fff; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; } /* Texto blanco con borde negro para los títulos */
+
+/* Navegación de dirección */
+.flex-direction-nav {*height: 0;} /* Estilo para la navegación */
+.flex-direction-nav a { width: 30px; height: 40px; margin:0; display: block; background: url(../img/bg_direction_nav.png) no-repeat 0 0; position: absolute; top: 45%; z-index: 10; cursor: pointer; text-indent: -9999px; opacity: 0; -webkit-transition: all .3s ease; } /* Ajustes de los botones de navegación */
+.flex-direction-nav .flex-next { background-position: 100% 0; right: -36px; } /* Posición del botón "siguiente" */
+.flex-direction-nav .flex-prev { left: -36px; } /* Posición del botón "anterior" */
+.flexslider:hover .flex-next { opacity: 0.8; right: 5px; } /* Opacidad del botón "siguiente" al pasar el cursor */
+.flexslider:hover .flex-prev { opacity: 0.8; left: 5px; } /* Opacidad del botón "anterior" al pasar el cursor */
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover { opacity: 1; } /* Opacidad al pasar el cursor sobre los botones */
+.flex-direction-nav .flex-disabled { opacity: .3!important; filter:alpha(opacity=30); cursor: default; } /* Estilo de los botones deshabilitados */
+
+/* Navegación de control */
+.flex-control-nav { width: 100%; position: absolute; bottom: 0; text-align: center; } /* Estilo del contenedor de los controles */
+.flex-control-nav li { margin: 0 6px; display: inline-block; zoom: 1; *display: inline; } /* Estilo de los elementos de la navegación de control */
+.flex-control-paging li a { width: 11px; height: 11px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; box-shadow: inset 0 0 3px rgba(0,0,0,0.3); } /* Estilo de los puntos de la navegación */
+.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); } /* Estilo al pasar el cursor sobre los puntos */
+.flex-control-paging li a.flex-active { background: #000; background: rgba(0,0,0,0.9); cursor: default; } /* Estilo del punto activo */
+
+/* Navegación con miniaturas */
+.flex-control-thumbs { margin: 5px 0 0; position: static; overflow: hidden; } /* Estilo del contenedor de miniaturas */
+.flex-control-thumbs li { width: 25%; float: left; margin: 0; } /* Estilo de los elementos de miniaturas */
+.flex-control-thumbs img { width: 100%; display: block; opacity: .7; cursor: pointer; } /* Estilo de las miniaturas */
+.flex-control-thumbs img:hover { opacity: 1; } /* Estilo al pasar el cursor sobre las miniaturas */
+.flex-control-thumbs .flex-active { opacity: 1; cursor: default; } /* Estilo de la miniatura activa */
+
+@media screen and (max-width: 860px) {
+  .flex-direction-nav .flex-prev { opacity: 1; left: 0; } /* Ajuste de posición del botón "anterior" en pantallas pequeñas */
+  .flex-direction-nav .flex-next { opacity: 1; right: 0; } /* Ajuste de posición del botón "siguiente" en pantallas pequeñas */
+}
