@@ -1,3 +1,4 @@
+/* Estilos base para Fancybox */
 .fancybox-wrap,
 .fancybox-skin,
 .fancybox-outer,
@@ -15,6 +16,7 @@
 	vertical-align: top; /* Alinea verticalmente estos elementos al tope */
 }
 
+/* Contenedor principal de Fancybox */
 .fancybox-wrap {
 	position: absolute; /* Posiciona el elemento de forma absoluta */
 	top: 0; /* Coloca el elemento en la parte superior */
@@ -22,38 +24,41 @@
 	z-index: 8020; /* Define el nivel de apilamiento */
 }
 
+/* Piel (Skin) de Fancybox */
 .fancybox-skin {
 	position: relative; /* Posiciona el elemento de forma relativa */
 	background: #2F3238; /* Color de fondo */
 	color: #565656; /* Color del texto */
 	text-shadow: none; /* Sin sombra de texto */
-	-webkit-border-radius: 0; /* Sin borde redondeado en webkit */
-	   -moz-border-radius: 0; /* Sin borde redondeado en Firefox */
-	        border-radius: 0; /* Sin borde redondeado */
+	border-radius: 0; /* Sin borde redondeado */
 }
 
+/* Fancybox abierta */
 .fancybox-opened {
 	z-index: 8030; /* Define el nivel de apilamiento para fancybox abierto */
 }
 
 .fancybox-opened .fancybox-skin {
-	-webkit-box-shadow: none; /* Sin sombra en webkit */
-	   -moz-box-shadow: none; /* Sin sombra en Firefox */
-	        box-shadow: none; /* Sin sombra */
+	box-shadow: none; /* Sin sombra */
 }
 
-.fancybox-outer, .fancybox-inner {
+/* Contenedores internos de Fancybox */
+.fancybox-outer,
+.fancybox-inner {
 	position: relative; /* Posiciona el elemento de forma relativa */
 }
 
+/* Contenedor interno de Fancybox */
 .fancybox-inner {
 	overflow: hidden; /* Oculta el desbordamiento */
 }
 
+/* Estilo para Fancybox con tipo iframe */
 .fancybox-type-iframe .fancybox-inner {
 	-webkit-overflow-scrolling: touch; /* Habilita el desplazamiento táctil en iOS */
 }
 
+/* Estilo para mensajes de error en Fancybox */
 .fancybox-error {
 	color: #444; /* Color del texto */
 	font-size: 14px; /* Tamaño de la fuente */
@@ -63,21 +68,29 @@
 	white-space: nowrap; /* Sin ajuste de línea */
 }
 
-.fancybox-image, .fancybox-iframe {
+/* Estilo para imágenes y iframes en Fancybox */
+.fancybox-image,
+.fancybox-iframe {
 	display: block; /* Muestra como bloque */
 	width: 100%; /* Ancho completo */
 	height: 100%; /* Altura completa */
 }
 
+/* Estilo para imágenes en Fancybox */
 .fancybox-image {
 	max-width: 100%; /* Ancho máximo del 100% */
 	max-height: 100%; /* Altura máxima del 100% */
 }
 
-#fancybox-loading, .fancybox-close, .fancybox-prev span, .fancybox-next span {
+/* Estilo para elementos de carga, cierre y navegación en Fancybox */
+#fancybox-loading,
+.fancybox-close,
+.fancybox-prev span,
+.fancybox-next span {
 	background-image: url('fancybox_sprite.png') !important; /* Imagen de fondo importante */
 }
 
+/* Estilo para el elemento de carga en Fancybox */
 #fancybox-loading {
 	position: fixed; /* Posición fija */
 	top: 50%; /* Centra verticalmente */
@@ -95,37 +108,23 @@
 	height: 44px; /* Altura de 44px */
 	background: url('fancybox_loading.gif') center center no-repeat; /* Imagen de fondo centrada sin repetición */
 }
-
-.fancybox-close {
-	position: absolute; /* Posición absoluta */
-	right: 0; /* Alinea a la derecha */
-	top: 0; /* Alinea en la parte superior */
-	width: 40px; /* Ancho de 40px */
-	height: 38px; /* Altura de 38px */
-	cursor: pointer; /* Muestra el cursor de puntero */
-	z-index: 9000; /* Nivel de apilamiento */
-	background-image: none; /* Sin imagen de fondo */
-	opacity: 0.5; /* Opacidad */
-	-webkit-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en webkit */
-	   -moz-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en Firefox */
-		 -o-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en Opera */
-		    transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición estándar */
-}
-
+/* Estilo para el icono dentro del botón de cierre en Fancybox */
 .fancybox-close i {
 	left: 50%; /* Centra horizontalmente */
 	top: 50%; /* Centra verticalmente */
-	margin: -11px 0 0 -11px; /* Ajusta el margen */
+	margin: -11px 0 0 -11px; /* Ajusta el margen para centrar */
 	font-size: 22px; /* Tamaño de la fuente */
 	line-height: 1em; /* Altura de línea */
 	position: absolute; /* Posición absoluta */
-	color: #FFFFFF; /* Color del texto */
+	color: #FFFFFF; /* Color del texto blanco */
 }
 
+/* Estilo para el botón de cierre al pasar el ratón */
 .fancybox-close:hover {
-	opacity: 1; /* Opacidad al pasar el ratón */
+	opacity: 1; /* Opacidad completa al pasar el ratón */
 }
 
+/* Estilo para la navegación de Fancybox */
 .fancybox-nav {
 	position: absolute; /* Posición absoluta */
 	top: 0; /* Alinea en la parte superior */
@@ -137,76 +136,106 @@
 	z-index: 8040; /* Nivel de apilamiento */
 }
 
+/* Estilo para el botón de navegación anterior */
 .fancybox-prev,
 .fancybox-prev span {
 	left: 0; /* Alinea a la izquierda */
 }
 
+/* Estilo para el botón de navegación siguiente */
 .fancybox-next,
 .fancybox-next span {
 	right: 0; /* Alinea a la derecha */
 }
 
+/* Estilo para los elementos span dentro de la navegación de Fancybox */
 .fancybox-nav span {
 	position: absolute; /* Posición absoluta */
 	top: 50%; /* Centra verticalmente */
 	width: 44px; /* Ancho de 44px */
 	height: 32px; /* Altura de 32px */
-	margin-top: -25px; /* Ajusta el margen superior */
+	margin-top: -25px; /* Ajusta el margen superior para centrar */
 	cursor: pointer; /* Muestra el cursor de puntero */
 	z-index: 8040; /* Nivel de apilamiento */
 	background-image: none; /* Sin imagen de fondo */
 	background-color: #26292E; /* Color de fondo */
 	background-position-y: -38px; /* Posición de la imagen de fondo verticalmente */
 	opacity: 0.5; /* Opacidad */
-	-webkit-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en webkit */
-	   -moz-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en Firefox */
-		 -o-transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición en Opera */
-		    transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición estándar */
+	transition: background 0.1s linear 0s, opacity 0.1s linear 0s; /* Transición suave */
 }
 
+/* Ajuste específico para el botón de navegación siguiente */
 .fancybox-next span {
 	background-position-y: -72px; /* Ajusta la posición de la imagen de fondo */
 }
-
+/* Estilo para el icono dentro del botón de navegación anterior en Fancybox */
 .fancybox-prev span i {
 	left: 50%; /* Centra horizontalmente */
 	top: 50%; /* Centra verticalmente */
-	margin: -15px 0 0 -17px; /* Ajusta el margen */
+	margin: -15px 0 0 -17px; /* Ajusta el margen para centrar */
 	font-size: 30px; /* Tamaño de la fuente */
 	line-height: 1em; /* Altura de línea */
 	position: absolute; /* Posición absoluta */
-	color: #FFFFFF; /* Color del texto */
+	color: #FFFFFF; /* Color del texto blanco */
 }
 
+/* Estilo para el icono dentro del botón de navegación siguiente en Fancybox */
 .fancybox-next span i {
 	left: 50%; /* Centra horizontalmente */
 	top: 50%; /* Centra verticalmente */
-	margin: -15px 0 0 -15px; /* Ajusta el margen */
+	margin: -15px 0 0 -15px; /* Ajusta el margen para centrar */
 	font-size: 30px; /* Tamaño de la fuente */
 	line-height: 1em; /* Altura de línea */
 	position: absolute; /* Posición absoluta */
-	color: #FFFFFF; /* Color del texto */
+	color: #FFFFFF; /* Color del texto blanco */
 }
 
+/* Estilo para la navegación de Fancybox al pasar el ratón */
 .fancybox-nav:hover span {
-	opacity: 1; /* Opacidad al pasar el ratón */
+	opacity: 1; /* Opacidad completa al pasar el ratón */
 }
 
+/* Estilo para los elementos temporales en Fancybox */
 .fancybox-tmp {
 	position: absolute; /* Posición absoluta */
-	top: -99999px; /* Fuera de la pantalla */
-	left: -99999px; /* Fuera de la pantalla */
+	top: -99999px; /* Fuera de la pantalla verticalmente */
+	left: -99999px; /* Fuera de la pantalla horizontalmente */
 	visibility: hidden; /* Oculto */
 	max-width: 99999px; /* Ancho máximo */
 	max-height: 99999px; /* Altura máxima */
 	overflow: visible !important; /* Desbordamiento visible */
 }
 
-/* Ayudante de overlay */
-
+/* Estilos para el overlay de Fancybox */
 .fancybox-lock {
-	margin: 0!important; /* Elimina el margen */
+	margin: 0 !important; /* Elimina el margen */
+}
+
+.fancybox-overlay {
+	position: absolute; /* Posición absoluta */
+	top: 0; /* Alinea en la parte superior */
+	left: 0; /* Alinea a la izquierda */
+	overflow: hidden !important; /* Oculta el desbordamiento */
+	display: none; /* Oculto por defecto */
+	z-index: 8010; /* Nivel de apilamiento */
+	background: url('fancybox_overlay.png'); /* Imagen de fondo */
+}
+
+/* Estilo para el overlay fijo en Fancybox */
+.fancybox-overlay-fixed {
+	position: fixed; /* Posición fija */
+	bottom: 0; /* Alinea en la parte inferior */
+	right: 0; /* Alinea a la derecha */
+}
+
+/* Estilo para el overlay dentro de un contenedor bloqueado en Fancybox */
+.fancybox-lock .fancybox-overlay {
+	overflow: auto; /* Desbordamiento automático */
+	overflow-y: scroll; /* Desbordamiento vertical con scroll */
+}
+/* Ayudante de overlay */
+.fancybox-lock {
+	margin: 0 !important; /* Elimina el margen */
 }
 
 .fancybox-overlay {
@@ -231,7 +260,6 @@
 }
 
 /* Ayudante de título */
-
 .fancybox-title {
 	visibility: hidden; /* Oculto */
 	position: relative; /* Posición relativa */
@@ -258,6 +286,7 @@
 	margin-bottom: 0; /* Sin margen inferior */
 }
 
+/* Estilo para el título flotante de Fancybox */
 .fancybox-title-float-wrap {
 	position: absolute; /* Posición absoluta */
 	bottom: 0; /* Alinea en la parte inferior */
@@ -271,11 +300,8 @@
 	display: inline-block; /* Muestra en bloque en línea */
 	margin-right: -100%; /* Ajusta el margen derecho */
 	padding: 2px 20px; /* Padding */
-	background: transparent; /* Fondo transparente */
 	background: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
-	-webkit-border-radius: 15px; /* Bordes redondeados en webkit */
-	   -moz-border-radius: 15px; /* Bordes redondeados en Firefox */
-	        border-radius: 15px; /* Bordes redondeados */
+	border-radius: 15px; /* Bordes redondeados */
 	text-shadow: 0 1px 2px #222; /* Sombra de texto */
 	color: #FFF; /* Color del texto */
 	font-weight: bold; /* Texto en negrita */
@@ -283,27 +309,30 @@
 	white-space: nowrap; /* Sin ajuste de línea */
 }
 
+/* Estilo para el título fuera del contenedor de Fancybox */
 .fancybox-title-outside-wrap {
 	position: relative; /* Posición relativa */
 	margin-top: 10px; /* Margen superior */
 	color: #fff; /* Color del texto */
 }
 
+/* Estilo para el título dentro del contenedor de Fancybox */
 .fancybox-title-inside-wrap {
 	padding: 3px 30px 6px; /* Padding */
 	background: #61B331; /* Color de fondo */
 }
 
+/* Estilo para el título sobre el contenedor de Fancybox */
 .fancybox-title-over-wrap {
 	position: absolute; /* Posición absoluta */
 	bottom: 0; /* Alinea en la parte inferior */
 	left: 0; /* Alinea a la izquierda */
 	color: #fff; /* Color del texto */
 	padding: 10px; /* Padding */
-	background: #000; /* Fondo negro */
 	background: rgba(0, 0, 0, .8); /* Fondo semi-transparente */
 }
 
+/* Media query para dispositivos con ancho máximo de 480px */
 @media (max-width: 480px) {
 	.fancybox-nav span,
 	.fancybox-nav:hover span,
@@ -317,9 +346,12 @@
 	}
 }
 
+/* Media query para dispositivos con ancho máximo de 320px */
 @media (max-width: 320px) {
 	.fancybox-close i {
 		left: 30px; /* Ajusta la posición a la izquierda */
 		top: 20px; /* Ajusta la posición superior */
 	}
 }
+
+

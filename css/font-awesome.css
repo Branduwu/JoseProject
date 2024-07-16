@@ -1,187 +1,208 @@
-
+/* Definición de fuente personalizada utilizando @font-face para FontAwesome */
 @font-face {
-  font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot?v=4.0.3');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-.fa {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'FontAwesome'; /* Nombre que se utilizará para referenciar la fuente */
+  /* URLs de los archivos de fuente, para soportar múltiples navegadores */
+  src: url('../fonts/fontawesome-webfont.eot?v=4.0.3'); /* EOT para IE antiguo */
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), /* Corrección para IE más nuevo */
+       url('../fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'), /* WOFF para la mayoría de los navegadores modernos */
+       url('../fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), /* TTF para iOS 4.2+ y Android */
+       url('../fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg'); /* SVG para navegadores antiguos */
+  font-weight: normal; /* Peso de la fuente */
+  font-style: normal; /* Estilo de la fuente */
 }
 
+/* Clase base para usar los iconos de FontAwesome */
+.fa {
+  display: inline-block; /* Se muestra como bloque pero en línea con otros elementos */
+  font-family: FontAwesome; /* Usa la fuente personalizada */
+  font-style: normal; /* Estilo normal para sobrescribir estilos de itálica */
+  font-weight: normal; /* Peso normal para mantener consistencia visual */
+  line-height: 1; /* Linea de altura para alinear los iconos adecuadamente */
+  -webkit-font-smoothing: antialiased; /* Mejora la apariencia en WebKit */
+  -moz-osx-font-smoothing: grayscale; /* Mejora la apariencia en Firefox en OS X */
+}
+
+/* Clases para ajustar el tamaño de los iconos de FontAwesome */
 .fa-lg {
-  font-size: 1.3333333333333333em;
-  line-height: 0.75em;
-  vertical-align: -15%;
+  font-size: 1.3333333333333333em; /* 33% más grande que el texto inherente */
+  line-height: 0.75em; /* Altura de línea ajustada para el icono */
+  vertical-align: -15%; /* Alinea verticalmente el icono respecto al texto adyacente */
 }
-.fa-2x {
-  font-size: 2em;
-}
-.fa-3x {
-  font-size: 3em;
-}
-.fa-4x {
-  font-size: 4em;
-}
-.fa-5x {
-  font-size: 5em;
-}
+.fa-2x { font-size: 2em; }
+.fa-3x { font-size: 3em; }
+.fa-4x { font-size: 4em; }
+.fa-5x { font-size: 5em; }
+
+/* Ancho fijo para iconos para alineación en textos */
 .fa-fw {
-  width: 1.2857142857142858em;
-  text-align: center;
+  width: 1.2857142857142858em; /* Ancho basado en el tamaño del texto */
+  text-align: center; /* Centro el icono dentro de su bloque */
 }
+
+/* Listas personalizadas usando FontAwesome */
 .fa-ul {
-  padding-left: 0;
-  margin-left: 2.142857142857143em;
-  list-style-type: none;
+  padding-left: 0; /* Remueve padding */
+  margin-left: 2.142857142857143em; /* Ajuste para iconos antes de texto */
+  list-style-type: none; /* Sin viñetas */
 }
 .fa-ul > li {
-  position: relative;
+  position: relative; /* Posicionamiento relativo para iconos absolutos */
 }
 .fa-li {
-  position: absolute;
-  left: -2.142857142857143em;
-  width: 2.142857142857143em;
-  top: 0.14285714285714285em;
-  text-align: center;
+  position: absolute; /* Posiciona el ícono de lista */
+  left: -2.142857142857143em; /* Posición ajustada a la izquierda */
+  width: 2.142857142857143em; /* Ancho para el ícono */
+  top: 0.14285714285714285em; /* Top ajustado */
+  text-align: center; /* Centro el ícono horizontalmente */
 }
-.fa-li.fa-lg {
-  left: -1.8571428571428572em;
-}
+
+/* Bordes para iconos como una opción estilística */
 .fa-border {
-  padding: .2em .25em .15em;
-  border: solid 0.08em #eeeeee;
-  border-radius: .1em;
+  padding: .2em .25em .15em; /* Relleno alrededor del ícono */
+  border: solid 0.08em #eeeeee; /* Borde sutil */
+  border-radius: .1em; /* Bordes ligeramente redondeados */
 }
-.pull-right {
-  float: right;
-}
-.pull-left {
-  float: left;
-}
-.fa.pull-left {
-  margin-right: .3em;
-}
-.fa.pull-right {
-  margin-left: .3em;
-}
+
+/* Clases para alineación flotante de iconos */
+.pull-right { float: right; }
+.pull-left { float: left; }
+.fa.pull-left { margin-right: .3em; } /* Margen para separar del texto */
+.fa.pull-right { margin-left: .3em; } /* Margen para separar del texto */
+
+/* Animación para girar iconos, útil para indicadores de carga */
 .fa-spin {
-  -webkit-animation: spin 2s infinite linear;
-  -moz-animation: spin 2s infinite linear;
-  -o-animation: spin 2s infinite linear;
-  animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear; /* Animación continua de giro para WebKit */
+  -moz-animation: spin 2s infinite linear; /* Animación continua de giro para Firefox */
+  -o-animation: spin 2s infinite linear; /* Animación continua de giro para Opera */
+  animation: spin 2s infinite linear; /* Animación estándar continua de giro */
 }
+
+/* Keyframes para animaciones de rotación, define el inicio y el final de la animación para diferentes navegadores */
+
+/* Keyframes para Firefox */
 @-moz-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
+  0% { 
+    -moz-transform: rotate(0deg); /* Inicia sin rotación */
   }
-  100% {
-    -moz-transform: rotate(359deg);
+  100% { 
+    -moz-transform: rotate(359deg); /* Rota casi una vuelta completa */
   }
 }
+
+/* Keyframes para WebKit (Chrome, Safari) */
 @-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
+  0% { 
+    -webkit-transform: rotate(0deg); /* Inicia sin rotación */
   }
-  100% {
-    -webkit-transform: rotate(359deg);
+  100% { 
+    -webkit-transform: rotate(359deg); /* Rota casi una vuelta completa */
   }
 }
+
+/* Keyframes para Opera */
 @-o-keyframes spin {
-  0% {
-    -o-transform: rotate(0deg);
+  0% { 
+    -o-transform: rotate(0deg); /* Inicia sin rotación */
   }
-  100% {
-    -o-transform: rotate(359deg);
+  100% { 
+    -o-transform: rotate(359deg); /* Rota casi una vuelta completa */
   }
 }
+
+/* Keyframes para IE */
 @-ms-keyframes spin {
-  0% {
-    -ms-transform: rotate(0deg);
+  0% { 
+    -ms-transform: rotate(0deg); /* Inicia sin rotación */
   }
-  100% {
-    -ms-transform: rotate(359deg);
+  100% { 
+    -ms-transform: rotate(359deg); /* Rota casi una vuelta completa */
   }
 }
+
+/* Keyframes estándar */
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
+  0% { 
+    transform: rotate(0deg); /* Inicia sin rotación */
   }
-  100% {
-    transform: rotate(359deg);
+  100% { 
+    transform: rotate(359deg); /* Rota casi una vuelta completa */
   }
 }
+
+/* Rotaciones de iconos FontAwesome a 90, 180 y 270 grados */
 .fa-rotate-90 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); /* Soporte para IE antiguo */
+  -webkit-transform: rotate(90deg); /* Rotación en navegadores WebKit */
+  -moz-transform: rotate(90deg); /* Rotación en Firefox */
+  -ms-transform: rotate(90deg); /* Rotación en IE 9+ */
+  -o-transform: rotate(90deg); /* Rotación en Opera */
+  transform: rotate(90deg); /* Rotación estándar */
 }
 .fa-rotate-180 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); /* Soporte para IE antiguo */
+  -webkit-transform: rotate(180deg); /* Rotación en navegadores WebKit */
+  -moz-transform: rotate(180deg); /* Rotación en Firefox */
+  -ms-transform: rotate(180deg); /* Rotación en IE 9+ */
+  -o-transform: rotate(180deg); /* Rotación en Opera */
+  transform: rotate(180deg); /* Rotación estándar */
 }
 .fa-rotate-270 {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-  -webkit-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
-  transform: rotate(270deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* Soporte para IE antiguo */
+  -webkit-transform: rotate(270deg); /* Rotación en navegadores WebKit */
+  -moz-transform: rotate(270deg); /* Rotación en Firefox */
+  -ms-transform: rotate(270deg); /* Rotación en IE 9+ */
+  -o-transform: rotate(270deg); /* Rotación en Opera */
+  transform: rotate(270deg); /* Rotación estándar */
 }
+
+/* Flip horizontal y vertical de iconos FontAwesome */
 .fa-flip-horizontal {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
-  -webkit-transform: scale(-1, 1);
-  -moz-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  transform: scale(-1, 1);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1); /* Soporte para IE antiguo */
+  -webkit-transform: scale(-1, 1); /* Volteo horizontal en navegadores WebKit */
+  -moz-transform: scale(-1, 1); /* Volteo horizontal en Firefox */
+  -ms-transform: scale(-1, 1); /* Volteo horizontal en IE 9+ */
+  -o-transform: scale(-1, 1); /* Volteo horizontal en Opera */
+  transform: scale(-1, 1); /* Volteo horizontal estándar */
 }
 .fa-flip-vertical {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
-  -webkit-transform: scale(1, -1);
-  -moz-transform: scale(1, -1);
-  -ms-transform: scale(1, -1);
-  -o-transform: scale(1, -1);
-  transform: scale(1, -1);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1); /* Soporte para IE antiguo */
+  -webkit-transform: scale(1, -1); /* Volteo vertical en navegadores WebKit */
+  -moz-transform: scale(1, -1); /* Volteo vertical en Firefox */
+  -ms-transform: scale(1, -1); /* Volteo vertical en IE 9+ */
+  -o-transform: scale(1, -1); /* Volteo vertical en Opera */
+  transform: scale(1, -1); /* Volteo vertical estándar */
 }
+
+/* Iconos en pila de FontAwesome */
 .fa-stack {
-  position: relative;
-  display: inline-block;
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
-  vertical-align: middle;
+  position: relative; /* Posicionamiento relativo para apilar iconos */
+  display: inline-block; /* Muestra como bloque en línea */
+  width: 2em; /* Ancho fijo */
+  height: 2em; /* Altura fija */
+  line-height: 2em; /* Altura de línea para centrar verticalmente */
+  vertical-align: middle; /* Alinea verticalmente en el medio */
 }
+
+/* Alineación de iconos dentro de la pila */
 .fa-stack-1x,
 .fa-stack-2x {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  text-align: center;
+  position: absolute; /* Posicionamiento absoluto para superponer iconos */
+  left: 0; /* Alineado a la izquierda */
+  width: 100%; /* Ancho completo */
+  text-align: center; /* Texto centrado */
 }
 .fa-stack-1x {
-  line-height: inherit;
+  line-height: inherit; /* Hereda la altura de línea del contenedor */
 }
 .fa-stack-2x {
-  font-size: 2em;
+  font-size: 2em; /* Tamaño de fuente para icono más grande en la pila */
 }
+
+/* Color inverso para iconos FontAwesome */
 .fa-inverse {
-  color: #ffffff;
+  color: #ffffff; /* Color blanco, útil para fondos oscuros */
 }
+
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
    readers do not read off random characters that represent icons */
 .fa-glass:before {
