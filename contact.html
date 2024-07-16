@@ -49,6 +49,9 @@
         .card a:hover {
             text-decoration: underline;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -90,38 +93,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-                    <div style="overflow:hidden;height:300px;width:100%;">
-                        <div id="gmap_canvas" style="height:300px;width:100%;"></div>
-                        <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
-                    </div>
-                    <script type="text/javascript">
-                        function init_map() {
-                            var myOptions = {
-                                zoom: 14,
-                                center: new google.maps.LatLng(15.5056, -88.0251), // Coordenadas de San Pedro Sula, Cortés, Honduras
-                                mapTypeId: google.maps.MapTypeId.ROADMAP
-                            };
-                            map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);
-                            marker = new google.maps.Marker({
-                                map: map,
-                                position: new google.maps.LatLng(15.5056, -88.0251) // Coordenadas del marcador
-                            });
-                            infowindow = new google.maps.InfoWindow({
-                                content: "<b>Control de Plagas</b><br/>3 Avenida SE, 21103<br/>San Pedro Sula, Cortés, Honduras"
-                            });
-                            google.maps.event.addListener(marker, "click", function () {
-                                infowindow.open(map, marker);
-                            });
-                            infowindow.open(map, marker);
-                        }
-                        google.maps.event.addDomListener(window, 'load', init_map);
+                    <!-- Se incluyen los estilos y scripts de Leaflet desde un CDN -->
+                    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+                    <div id="mapid" style="height: 300px; width: 100%;"></div> <!-- Contenedor del mapa -->
+                    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                    <script>
+                        // Inicialización del mapa usando Leaflet
+                        var mymap = L.map('mapid').setView([15.5056, -88.0251], 14); // Coordenadas y zoom inicial
+    
+                        // Añade los tiles de OpenStreetMap al mapa
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            maxZoom: 19,
+                            attribution: '© OpenStreetMap'
+                        }).addTo(mymap);
+    
+                        // Crea un marcador en la ubicación especificada
+                        var marker = L.marker([15.5056, -88.0251]).addTo(mymap);
+                        // Añade un popup al marcador con información
+                        marker.bindPopup("<b>Control de Plagas</b><br>3 Avenida SE, 21103<br>San Pedro Sula, Cortés, Honduras");
+    
+                        // Abre el popup automáticamente cuando se carga el mapa
+                        marker.on('add', function() {
+                            marker.openPopup();
+                        });
                     </script>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <p>Para cualquier consulta, por favor complete el formulario de contacto a continuación.</p>
                     <div class="alert alert-success hidden" id="contactSuccess">
                         <strong>¡Éxito!</strong> Su mensaje ha sido enviado.
@@ -129,34 +128,141 @@
                     <div class="alert alert-error hidden" id="contactError">
                         <strong>¡Error!</strong> Hubo un error al enviar su mensaje.
                     </div>
-                    <div class="contact-form">
-                        <form id="contact-form" role="form" novalidate="novalidate">
+                    <div class="btn-group" role="group" aria-label="Tipo de entidad">
+                        <button type="button" class="btn btn-default" onclick="showForm('residencial')">Residencial</button>
+                        <button type="button" class="btn btn-default" onclick="showForm('comercial')">Comercial</button>
+                        <button type="button" class="btn btn-default" onclick="showForm('industrial')">Industrial</button>
+                    </div>
+                    <br><br>
+                    <div id="form-residencial" class="contact-form hidden">
+                        <form id="contact-form-residencial" role="form" novalidate="novalidate">
                             <div class="form-group has-feedback">
-                                <label for="name">Nombre*</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="">
+                                <label for="from_name-residencial">Tu Nombre*</label>
+                                <input type="text" class="form-control" id="from_name-residencial" name="from_name" placeholder="">
                                 <i class="fa fa-user form-control-feedback"></i>
                                 <div class="validation"></div>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="email">Correo Electrónico*</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="">
+                                <label for="email-residencial">Correo Electrónico*</label>
+                                <input type="email" class="form-control" id="email-residencial" name="email" placeholder="">
                                 <i class="fa fa-envelope form-control-feedback"></i>
                                 <div class="validation"></div>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="subject">Asunto*</label>
-                                <input type="text" class="form-control" id="subject" name="subject" placeholder="">
+                                <label for="subject-residencial">Asunto*</label>
+                                <input type="text" class="form-control" id="subject-residencial" name="subject" placeholder="">
                                 <i class="fa fa-navicon form-control-feedback"></i>
                             </div>
                             <div class="form-group has-feedback">
-                                <label for="message">Mensaje*</label>
-                                <textarea class="form-control" rows="6" id="message" name="message" placeholder=""></textarea>
+                                <label for="phone-residencial">Teléfono*</label>
+                                <input type="tel" class="form-control" id="phone-residencial" name="phone" placeholder="">
+                                <i class="fa fa-phone form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="message-residencial">Mensaje*</label>
+                                <textarea class="form-control" rows="6" id="message-residencial" name="message" placeholder=""></textarea>
                                 <i class="fa fa-pencil form-control-feedback"></i>
                             </div>
+                            <input type="hidden" name="entity_type" value="Residencial">
+                            <input type="hidden" name="contact_number" value="">
+                            <input type="hidden" name="entity_specific_type" value="">
+                            <input type="submit" value="Enviar" class="btn btn-default">
+                        </form>
+                    </div>
+                    <div id="form-comercial" class="contact-form hidden">
+                        <form id="contact-form-comercial" role="form" novalidate="novalidate">
+                            <div class="form-group has-feedback">
+                                <label for="from_name-comercial">Tu Nombre*</label>
+                                <input type="text" class="form-control" id="from_name-comercial" name="from_name" placeholder="">
+                                <i class="fa fa-user form-control-feedback"></i>
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="type-comercio">Tipo de Comercio*</label>
+                                <select class="form-control" id="type-comercio" name="entity_specific_type" onchange="showCustomCommerceField()">
+                                    <option value="Restaurante">Restaurante</option>
+                                    <option value="Hotel">Hotel</option>
+                                    <option value="Almacen">Almacén</option>
+                                    <option value="Farmaceutica">Farmacéutica</option>
+                                    <option value="Otros(as)">Otros(as)</option>
+                                </select>
+                                <input type="text" class="form-control hidden" id="customCommerce" placeholder="Especifique otro comercio" name="custom-commerce">
+                                <i class="fa fa-building form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="email-comercial">Correo Electrónico*</label>
+                                <input type="email" class="form-control" id="email-comercial" name="email" placeholder="">
+                                <i class="fa fa-envelope form-control-feedback"></i>
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="subject-comercial">Asunto*</label>
+                                <input type="text" class="form-control" id="subject-comercial" name="subject" placeholder="">
+                                <i class="fa fa-navicon form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="phone-comercial">Teléfono*</label>
+                                <input type="tel" class="form-control" id="phone-comercial" name="phone" placeholder="">
+                                <i class="fa fa-phone form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="message-comercial">Mensaje*</label>
+                                <textarea class="form-control" rows="6" id="message-comercial" name="message" placeholder=""></textarea>
+                                <i class="fa fa-pencil form-control-feedback"></i>
+                            </div>
+                            <input type="hidden" name="entity_type" value="Comercial">
+                            <input type="hidden" name="contact_number" value="">
+                            <input type="submit" value="Enviar" class="btn btn-default">
+                        </form>
+                    </div>
+                    <div id="form-industrial" class="contact-form hidden">
+                        <form id="contact-form-industrial" role="form" novalidate="novalidate">
+                            <div class="form-group has-feedback">
+                                <label for="from_name-industrial">Tu Nombre*</label>
+                                <input type="text" class="form-control" id="from_name-industrial" name="from_name" placeholder="">
+                                <i class="fa fa-user form-control-feedback"></i>
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="type-industria">Tipo de Industria*</label>
+                                <select class="form-control" id="type-industria" name="entity_specific_type" onchange="showCustomIndustryField()">
+                                    <option value="Procesadoras de Alimentos">Procesadoras de Alimentos</option>
+                                    <option value="Fabricas">Fábricas</option>
+                                    <option value="Otros(as)">Otros(as)</option>
+                                </select>
+                                <input type="text" class="form-control hidden" id="customIndustry" placeholder="Especifique otra industria" name="custom-industry">
+                                <i class="fa fa-industry form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="email-industrial">Correo Electrónico*</label>
+                                <input type="email" class="form-control" id="email-industrial" name="email" placeholder="">
+                                <i class="fa fa-envelope form-control-feedback"></i>
+                                <div class="validation"></div>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="subject-industrial">Asunto*</label>
+                                <input type="text" class="form-control" id="subject-industrial" name="subject" placeholder="">
+                                <i class="fa fa-navicon form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="phone-industrial">Teléfono*</label>
+                                <input type="tel" class="form-control" id="phone-industrial" name="phone" placeholder="">
+                                <i class="fa fa-phone form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="message-industrial">Mensaje*</label>
+                                <textarea class="form-control" rows="6" id="message-industrial" name="message" placeholder=""></textarea>
+                                <i class="fa fa-pencil form-control-feedback"></i>
+                            </div>
+                            <input type="hidden" name="entity_type" value="Industrial">
+                            <input type="hidden" name="contact_number" value="">
                             <input type="submit" value="Enviar" class="btn btn-default">
                         </form>
                     </div>
                 </div>
+            </div>
+            
+            
                 <div class="col-md-6">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt eius magni provident, doloribus omnis minus temporibus perferendis nesciunt quam repellendus nulla nemo ipsum odit corrupti consequuntur possimus, vero mollitia velit ad consectetur. Alias, laborum excepturi nihil autem nemo numquam, ipsa architecto non, magni consequuntur quam.</p>
                     <br/>
@@ -261,46 +367,77 @@
 <script src="js/custom.js"></script>
 <script src="js/validate.js"></script>
 
+<!-- Script para mostrar los formularios -->
+<script>
+    function showForm(formType) {
+        document.getElementById('form-residencial').classList.add('hidden');
+        document.getElementById('form-comercial').classList.add('hidden');
+        document.getElementById('form-industrial').classList.add('hidden');
+
+        if (formType === 'residencial') {
+            document.getElementById('form-residencial').classList.remove('hidden');
+        } else if (formType === 'comercial') {
+            document.getElementById('form-comercial').classList.remove('hidden');
+        } else if (formType === 'industrial') {
+            document.getElementById('form-industrial').classList.remove('hidden');
+        }
+    }
+
+    function showCustomCommerceField() {
+        var commerceSelect = document.getElementById('type-comercio');
+        var customCommerceField = document.getElementById('customCommerce');
+        if (commerceSelect.value === 'Otros(as)') {
+            customCommerceField.classList.remove('hidden');
+        } else {
+            customCommerceField.classList.add('hidden');
+        }
+    }
+
+    function showCustomIndustryField() {
+        var industrySelect = document.getElementById('type-industria');
+        var customIndustryField = document.getElementById('customIndustry');
+        if (industrySelect.value === 'Otros(as)') {
+            customIndustryField.classList.remove('hidden');
+        } else {
+            customIndustryField.classList.add('hidden');
+        }
+    }
+</script>
+
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
 <!-- Script para enviar el formulario mediante EmailJS -->
 <script type="text/javascript">
-    (function(){
-        emailjs.init("YOUR_USER_ID"); // Sustituye YOUR_USER_ID por tu user ID de EmailJS
+    (function() {
+        emailjs.init("aHdijY2VUtYDd6y5Q"); // Reemplaza con tu User ID de EmailJS
     })();
-    
-    window.onload = function() {
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
+
+    function setupFormSubmit(formId, serviceID, templateID) {
+        const form = document.getElementById(formId);
+        const btn = form.querySelector('input[type="submit"]');
+        
+        form.addEventListener('submit', function(event) {
             event.preventDefault();
-
-            // Validación de campos
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var subject = document.getElementById('subject').value;
-            var message = document.getElementById('message').value;
-            var emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
-            var nameExp = /^[a-zA-Z\s]+$/;
-
-            if (!nameExp.test(name)) {
-                alert('El nombre solo puede contener letras.');
-                return false;
-            }
-            if (!emailExp.test(email)) {
-                alert('Por favor, ingrese un correo electrónico válido.');
-                return false;
-            }
-
-            // Genera un número de contacto para la plantilla
-            this.contact_number.value = Math.random() * 100000 | 0;
-
-            // Estos IDs de servicio, plantilla y usuario son específicos de tu cuenta de EmailJS
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-                .then(function() {
-                    alert('¡Tu mensaje fue enviado!');
+            btn.value = 'Sending...';
+            
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btn.value = 'Send Email';
+                    alert('Sent!');
                     document.getElementById('contactSuccess').classList.remove('hidden');
-                }, function(error) {
-                    console.log('FAILED...', error);
+                }, (err) => {
+                    btn.value = 'Send Email';
+                    alert(JSON.stringify(err));
                     document.getElementById('contactError').classList.remove('hidden');
                 });
         });
+    }
+
+    window.onload = function() {
+        setupFormSubmit('contact-form-residencial', 'default_service', 'template_niotlol');
+        setupFormSubmit('contact-form-comercial', 'service_co6wc4o', 'template_niotlol');
+        setupFormSubmit('contact-form-industrial', 'service_co6wc4o', 'template_niotlol');
     }
 </script>
 
